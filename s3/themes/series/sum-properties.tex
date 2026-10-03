@@ -1,0 +1,65 @@
+\section{Функциональные свойства суммы ряда}\label{sec-series-04}
+
+\begin{theorem}[Непрерывность суммы]\label{thm-series-continuity}
+
+Если все \(u_n\in C(\Omega)\), а \(\sum u_n\) сходится равномерно на \(\Omega\), то \(S=\sum u_n\in C(\Omega)\).
+
+\end{theorem}
+
+\begin{proof}
+
+Частичные суммы непрерывны и сходятся равномерно. Применяем теорему \ref{thm-continuity-sequence}.
+
+\end{proof}
+
+\begin{cor}[Предельный переход под знаком ряда]\label{cor-series-limit}
+
+Пусть \(\sum u_n\) сходится равномерно на \(\Omega\), \(x_0\) --- предельная точка \(\Omega\), а для каждого \(n\) существует конечный \(a_n=\lim_{x\to x_0}u_n(x)\). Тогда \(\sum a_n\) сходится и \[
+\lim_{x\to x_0}\sum_{n=1}^\infty u_n(x)
+=\sum_{n=1}^\infty\lim_{x\to x_0}u_n(x)=\sum_{n=1}^\infty a_n.
+\]
+
+\end{cor}
+
+\begin{proof}
+
+Для частичных сумм \(S_n\) имеем \(\lim_{x\to x_0}S_n(x)=\sum_{k=1}^n a_k=A_n\). Применяем следствие \ref{cor-interchange-limits} к \(S_n\rightrightarrows S\).
+
+\end{proof}
+
+\begin{theorem}[Почленное интегрирование]\label{thm-series-integral}
+
+Пусть \(u_n:[a,b]\to\mathbb R\), \(a<b\), все \(u_n\in R([a,b])\), а \(\sum u_n\) сходится равномерно на \([a,b]\). Тогда \(S\in R([a,b])\) и
+
+\begin{equation}
+\int_a^b S(x)\,dx=\sum_{n=1}^\infty\int_a^b u_n(x)\,dx.
+\label{eq-series-integral}
+\end{equation}
+
+\end{theorem}
+
+\begin{proof}
+
+Применяем теорему \ref{thm-integrate-sequence} к частичным суммам и используем линейность интеграла для конечных сумм.
+
+\end{proof}
+
+\begin{theorem}[Почленное дифференцирование]\label{thm-series-derivative}
+
+Пусть \(u_n:[a,b]\to\mathbb R\) дифференцируемы, ряд \(\sum u_n'\) сходится равномерно на \([a,b]\), а \(\sum u_n(x_0)\) сходится хотя бы в одной точке \(x_0\in[a,b]\). Тогда \(\sum u_n\) сходится равномерно на \([a,b]\), его сумма дифференцируема и
+
+\begin{equation}
+S'(x)=\left(\sum_{n=1}^\infty u_n(x)\right)'
+=\sum_{n=1}^\infty u_n'(x).
+\label{eq-series-derivative}
+\end{equation}
+
+На концах отрезка производные односторонние.
+
+\end{theorem}
+
+\begin{proof}
+
+Применяем теорему \ref{thm-differentiate-sequence} к \(S_n=\sum_{k=1}^n u_k\): \(S_n'=\sum_{k=1}^n u_k'\) сходится равномерно, а \(S_n(x_0)\) имеет конечный предел.
+
+\end{proof}

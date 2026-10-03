@@ -1,0 +1,166 @@
+\section{Свойства равномерно сходящихся последовательностей}\label{sec-sequences-02}
+
+\subsection{Линейные операции и произведение}\label{sec-sequences-02-1}
+
+\begin{theorem}[Алгебраические операции]\label{thm-sequence-operations}
+
+Пусть \(f_n,g_n\in\ell^\infty(\Omega)\), \(f_n\rightrightarrows f\), \(g_n\rightrightarrows g\). Тогда для любых \(\alpha,\beta\in\mathbb C\) (в частности, вещественных) \[
+\alpha f_n+\beta g_n\rightrightarrows\alpha f+\beta g,
+\qquad g_nf_n\rightrightarrows gf.
+\] В частности, можно умножать на одну фиксированную ограниченную функцию \(g\).
+
+\end{theorem}
+
+\begin{proof}
+
+Первое утверждение следует из \[
+\lVert \alpha(f_n-f)+\beta(g_n-g)\rVert_\infty
+\le |\alpha|\lVert f_n-f\rVert_\infty+|\beta|\lVert g_n-g\rVert_\infty.
+\] Для произведения: \[
+\begin{aligned}
+\lVert g_nf_n-gf\rVert_\infty
+&\le\lVert (g_n-g)f_n\rVert_\infty+\lVert g(f_n-f)\rVert_\infty\\
+&\le\lVert g_n-g\rVert_\infty\lVert f_n\rVert_\infty
++\lVert g\rVert_\infty\lVert f_n-f\rVert_\infty\longrightarrow0.
+\end{aligned}
+\] Здесь \(\lVert f_n\rVert_\infty\) ограничены, поскольку \(f_n\rightrightarrows f\) и \(f_n\in\ell^\infty(\Omega)\).
+
+\end{proof}
+
+\subsection{Добавление одной точки}\label{sec-sequences-02-2}
+
+\begin{theorem}[Расширение множества сходимости]\label{thm-add-point}
+
+Пусть \(x_0\notin\Omega\), \(f_n\rightrightarrows f\) на \(\Omega\) и \(f_n(x_0)\to f(x_0)\), причём предел конечен. Тогда \(f_n\rightrightarrows f\) на \(\Omega\cup\{x_0\}\).
+
+\end{theorem}
+
+\begin{proof}
+
+\[
+\sup_{x\in\Omega\cup\{x_0\}}|f_n(x)-f(x)|
+=\max\left\{\sup_{x\in\Omega}|f_n(x)-f(x)|,
+|f_n(x_0)-f(x_0)|\right\}\longrightarrow0.
+\] Можно также выбрать номера \(N_1,N_2\) для двух оценок и взять \(N=\max\{N_1,N_2\}\).
+
+\end{proof}
+
+\subsection{Непрерывность}\label{sec-sequences-02-3}
+
+\begin{theorem}[Непрерывность равномерного предела]\label{thm-continuity-sequence}
+
+Если \(f_n\in C(\Omega)\) и \(f_n\rightrightarrows f\) на \(\Omega\), то \(f\in C(\Omega)\).
+
+\end{theorem}
+
+\begin{proof}
+
+Фиксируем \(x_0\in\Omega\). По неравенству треугольника \[
+\begin{aligned}
+|f(x)-f(x_0)|\le{}&|f(x)-f_n(x)|\\
+&+|f_n(x)-f_n(x_0)|+|f_n(x_0)-f(x_0)|.
+\end{aligned}
+\] Для \(\varepsilon>0\) выбираем и фиксируем \(n\) так, чтобы первый и третий члены были меньше \(\varepsilon/3\) для всех \(x\in\Omega\). По непрерывности этого \(f_n\) существует \(\delta>0\), при котором средний член меньше \(\varepsilon/3\) для \(x\in\Omega\), \(|x-x_0|<\delta\). Значит, \(|f(x)-f(x_0)|<\varepsilon\).
+
+\end{proof}
+
+В этих условиях можно менять порядок пределов в точке непрерывности: \[
+\lim_{x\to x_0}\lim_{n\to\infty}f_n(x)
+=\lim_{n\to\infty}\lim_{x\to x_0}f_n(x).
+\]
+
+\begin{example}[Поточечная сходимость без равномерной]\label{exm-powers-nonuniform}
+
+На \((-1,1]\) функции \(f_n(x)=x^n\) сходятся поточечно к \[
+f(x)=\begin{cases}0,&|x|<1,\\1,&x=1.\end{cases}
+\] Все \(f_n\) непрерывны, но \(f\) разрывна в \(1\). Поэтому по теореме \ref{thm-continuity-sequence} сходимость неравномерна.
+
+\end{example}
+
+\subsection{Перестановка пределов}\label{sec-sequences-02-4}
+
+\begin{cor}[Предел в предельной точке]\label{cor-interchange-limits}
+
+Пусть \(f_n\rightrightarrows f\) на \(\Omega\), \(x_0\) --- предельная точка \(\Omega\) и для каждого \(n\) существует конечный предел \(a_n=\lim_{x\to x_0}f_n(x)\). Тогда существуют конечные пределы
+
+\begin{equation}
+\lim_{x\to x_0}f(x)=\lim_{n\to\infty}a_n.
+\label{eq-interchange-limits}
+\end{equation}
+
+\end{cor}
+
+\begin{proof}
+
+Из равномерной сходимости следует равномерная фундаментальность. Для любых \(m,n>N\) и всех \(x\in\Omega\) имеем \(|f_n(x)-f_m(x)|<\varepsilon/2\). Переход к \(x\to x_0\) даёт \(|a_n-a_m|\le\varepsilon/2<\varepsilon\). По критерию Коши \(a_n\to A\in\mathbb C\).
+
+Продолжим функции в точку \(x_0\), присвоив им значения \(a_n\), а предельной функции --- значение \(A\). Если \(x_0\) уже принадлежит \(\Omega\), сначала исключаем её и затем переопределяем значение. Продолжения \(\widetilde f_n\) непрерывны \textbf{в точке \(x_0\)}. По теореме \ref{thm-add-point} они сходятся равномерно к \(\widetilde f\) на \(\Omega\cup\{x_0\}\). Доказательство теоремы \ref{thm-continuity-sequence} в точке \(x_0\) даёт непрерывность \(\widetilde f\) в ней. Поэтому \(\lim_{x\to x_0}f(x)=A\).
+
+\end{proof}
+
+\subsection{Интегрируемость}\label{sec-sequences-02-5}
+
+\begin{theorem}[Переход к пределу под интегралом]\label{thm-integrate-sequence}
+
+Пусть \(a<b\), \(f_n:[a,b]\to\mathbb R\), \(f_n\in R([a,b])\) и \(f_n\rightrightarrows f\) на \([a,b]\). Тогда \(f\in R([a,b])\) и
+
+\begin{equation}
+\int_a^b f(x)\,dx=\lim_{n\to\infty}\int_a^b f_n(x)\,dx.
+\label{eq-integrate-sequence}
+\end{equation}
+
+\end{theorem}
+
+\begin{proof}
+
+Равномерный предел ограниченных функций ограничен. Для интегрируемости используем критерий Дарбу. Если \(P\) --- разбиение \([a,b]\), то \[
+U(f,P)-L(f,P)
+\le U(f_n,P)-L(f_n,P)+2(b-a)\lVert f-f_n\rVert_\infty.
+\] Для заданного \(\varepsilon>0\) выбираем \(n\) так, чтобы второй член был меньше \(\varepsilon/2\), а затем, пользуясь интегрируемостью \(f_n\), разбиение \(P\) с \(U(f_n,P)-L(f_n,P)<\varepsilon/2\). Получаем интегрируемость \(f\).
+
+Далее обозначим \(I_n=\int_a^b f_n\), \(I=\int_a^b f\). Тогда \[
+|I_n-I|\le\int_a^b|f_n(x)-f(x)|\,dx
+\le(b-a)\lVert f_n-f\rVert_\infty\longrightarrow0.
+\] Эквивалентно, можно выбрать \(N\) с \(|f_n(x)-f(x)|<\varepsilon/(b-a)\) для всех \(x\) и \(n>N\).
+
+\end{proof}
+
+Можно также использовать критерий Лебега: \(D(f)\subseteq\bigcup_{n=1}^\infty D(f_n)\); счётное объединение множеств меры нуль имеет меру нуль.
+
+\subsection{Дифференцируемость}\label{sec-sequences-02-6}
+
+\begin{theorem}[Переход к пределу производных]\label{thm-differentiate-sequence}
+
+Пусть \(a<b\), \(f_n:[a,b]\to\mathbb R\) дифференцируемы и \(f_n'\rightrightarrows\varphi\) на \([a,b]\). Пусть существует \(x_0\in[a,b]\), в которой последовательность \(f_n(x_0)\) имеет конечный предел. Тогда \(f_n\rightrightarrows f\) на \([a,b]\), функция \(f\) дифференцируема и \(f'=\varphi\).
+
+На концах отрезка производные понимаются как односторонние.
+
+\end{theorem}
+
+\begin{proof}
+
+\textbf{1. Существование равномерного предела.} Зафиксируем \(x_1\in[a,b]\) и на \(\Omega=[a,b]\setminus\{x_1\}\) положим \[
+g_n(x)=\frac{f_n(x)-f_n(x_1)}{x-x_1}.
+\] По теореме Лагранжа для функции \(f_n-f_m\), при некотором \(c\) между \(x\) и \(x_1\), \[
+|g_n(x)-g_m(x)|=|f_n'(c)-f_m'(c)|.
+\] Равномерная сходимость производных даёт равномерную фундаментальность \(g_n\).
+
+Ограниченность отдельных \(g_n\) из условий не следует: производные могут быть неограниченными. Поэтому полноту \(\ell^\infty\) к самим \(g_n\) применять нельзя. Выбираем достаточно большой фиксированный \(n_*\); разности \(g_n-g_{n_*}\) для \(n>n_*\) ограничены и образуют фундаментальную последовательность в \(\ell^\infty(\Omega)\). По теореме \ref{thm-completeness} они имеют равномерный предел, следовательно \(g_n\rightrightarrows g\) на \(\Omega\).
+
+Теперь в этой конструкции берём \(x_1=x_0\), где \(f_n(x_0)\to A\). Из \[
+f_n(x)=g_n(x)(x-x_0)+f_n(x_0)
+\] и \(|x-x_0|\le b-a\) получаем равномерную сходимость к \(f(x)=g(x)(x-x_0)+A\) на \([a,b]\setminus\{x_0\}\). Присваиваем \(f(x_0)=A\) и применяем теорему \ref{thm-add-point}.
+
+\textbf{2. Производная предела.} Теперь для произвольного \(x_1\in[a,b]\) повторяем построение \(g_n\). Поточечный переход к пределу в разностном отношении даёт \[
+g(x)=\frac{f(x)-f(x_1)}{x-x_1}.
+\] Для каждого \(n\) существует \(\lim_{x\to x_1}g_n(x)=f_n'(x_1)\). По следствию \ref{cor-interchange-limits} \[
+\lim_{x\to x_1}\frac{f(x)-f(x_1)}{x-x_1}
+=\lim_{n\to\infty}f_n'(x_1)=\varphi(x_1).
+\] Итак, \(f'(x_1)=\varphi(x_1)\).
+
+\end{proof}
+
+Можно переходить к пределу производных: \[
+\left(\lim_{n\to\infty}f_n(x)\right)'
+=\lim_{n\to\infty}f_n'(x),
+\] если выполнены условия теоремы \ref{thm-differentiate-sequence}.

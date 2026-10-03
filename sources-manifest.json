@@ -5,269 +5,793 @@
       "file": "25,26_функциональные_последовательности.pdf",
       "sha256": "12f50e080cdf930f85df8209b013dcdb02be9dfea47f262e353dad6a00126cd7",
       "page_count": 9,
-      "chapter": "chapters/25-26.qmd",
       "pages": [
         {
           "page": 1,
-          "anchors": [
-            "def-bounded",
-            "def-uniform-sequence",
-            "def-pointwise"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/convergence.tex",
+              "label": "def-bounded"
+            },
+            {
+              "file": "s3/themes/sequences/convergence.tex",
+              "label": "def-uniform-sequence"
+            },
+            {
+              "file": "s3/themes/sequences/convergence.tex",
+              "label": "def-pointwise"
+            }
+          ]
         },
         {
           "page": 2,
-          "anchors": [
-            "thm-completeness"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/convergence.tex",
+              "label": "thm-completeness"
+            }
+          ]
         },
         {
           "page": 3,
-          "anchors": [
-            "thm-sequence-operations",
-            "thm-add-point"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-sequence-operations"
+            },
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-add-point"
+            }
+          ]
         },
         {
           "page": 4,
-          "anchors": [
-            "thm-add-point",
-            "thm-continuity-sequence"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-add-point"
+            },
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-continuity-sequence"
+            }
+          ]
         },
         {
           "page": 5,
-          "anchors": [
-            "thm-continuity-sequence",
-            "exm-powers-nonuniform",
-            "cor-interchange-limits"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-continuity-sequence"
+            },
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "exm-powers-nonuniform"
+            },
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "cor-interchange-limits"
+            }
+          ]
         },
         {
           "page": 6,
-          "anchors": [
-            "cor-interchange-limits",
-            "thm-integrate-sequence"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "cor-interchange-limits"
+            },
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-integrate-sequence"
+            }
+          ]
         },
         {
           "page": 7,
-          "anchors": [
-            "thm-integrate-sequence"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-integrate-sequence"
+            }
+          ]
         },
         {
           "page": 8,
-          "anchors": [
-            "thm-differentiate-sequence"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-differentiate-sequence"
+            }
+          ]
         },
         {
           "page": 9,
-          "anchors": [
-            "thm-differentiate-sequence"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/sequences/properties.tex",
+              "label": "thm-differentiate-sequence"
+            }
+          ]
         }
-      ]
+      ],
+      "theme": "sec-sequences"
     },
     {
       "file": "27,28_функциональные_ряды.pdf",
       "sha256": "9932d180c1f54ac17a8f49c9007095e0a7581c34c700cb4a8d3fae66e5515dc4",
       "page_count": 9,
-      "chapter": "chapters/27-28.qmd",
       "pages": [
         {
           "page": 1,
-          "anchors": [
-            "def-functional-series",
-            "def-uniform-series",
-            "thm-series-necessary"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "def-functional-series"
+            },
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "def-uniform-series"
+            },
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "thm-series-necessary"
+            }
+          ]
         },
         {
           "page": 2,
-          "anchors": [
-            "exm-geometric-series",
-            "exm-telescoping-series",
-            "fig-telescoping"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "exm-geometric-series"
+            },
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "exm-telescoping-series"
+            },
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "fig-telescoping"
+            }
+          ]
         },
         {
           "page": 3,
-          "anchors": [
-            "exm-telescoping-series",
-            "thm-series-linear",
-            "thm-series-tail",
-            "thm-series-cauchy"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/definitions.tex",
+              "label": "exm-telescoping-series"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "thm-series-linear"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "thm-series-tail"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "thm-series-cauchy"
+            }
+          ]
         },
         {
           "page": 4,
-          "anchors": [
-            "thm-series-cauchy",
-            "thm-weierstrass"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "thm-series-cauchy"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "thm-weierstrass"
+            }
+          ]
         },
         {
           "page": 5,
-          "anchors": [
-            "exm-weierstrass-geometric",
-            "exm-alternating-functional"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "exm-weierstrass-geometric"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "exm-alternating-functional"
+            }
+          ]
         },
         {
           "page": 6,
-          "anchors": [
-            "exm-alternating-functional",
-            "exm-absolute-not-uniform",
-            "thm-functional-majorant",
-            "thm-dirichlet"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "exm-alternating-functional"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "exm-absolute-not-uniform"
+            },
+            {
+              "file": "s3/themes/series/criteria.tex",
+              "label": "thm-functional-majorant"
+            },
+            {
+              "file": "s3/themes/series/dirichlet-abel.tex",
+              "label": "thm-dirichlet"
+            }
+          ]
         },
         {
           "page": 7,
-          "anchors": [
-            "thm-abel-test",
-            "thm-series-continuity",
-            "cor-series-limit"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/dirichlet-abel.tex",
+              "label": "thm-abel-test"
+            },
+            {
+              "file": "s3/themes/series/sum-properties.tex",
+              "label": "thm-series-continuity"
+            },
+            {
+              "file": "s3/themes/series/sum-properties.tex",
+              "label": "cor-series-limit"
+            }
+          ]
         },
         {
           "page": 8,
-          "anchors": [
-            "cor-series-limit",
-            "thm-series-integral",
-            "thm-series-derivative"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/sum-properties.tex",
+              "label": "cor-series-limit"
+            },
+            {
+              "file": "s3/themes/series/sum-properties.tex",
+              "label": "thm-series-integral"
+            },
+            {
+              "file": "s3/themes/series/sum-properties.tex",
+              "label": "thm-series-derivative"
+            }
+          ]
         },
         {
           "page": 9,
-          "anchors": [
-            "thm-series-derivative"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/series/sum-properties.tex",
+              "label": "thm-series-derivative"
+            }
+          ]
         }
-      ]
+      ],
+      "theme": "sec-series"
     },
     {
       "file": "29,30_степенные_ряды.pdf",
       "sha256": "5179338b2beec45dab8418d8289714415359090f3bfdf78b36cf7b0a6c138712",
       "page_count": 11,
-      "chapter": "chapters/29-30.qmd",
       "pages": [
         {
           "page": 1,
-          "anchors": [
-            "def-power-series",
-            "thm-abel-first"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/abel-radius.tex",
+              "label": "def-power-series"
+            },
+            {
+              "file": "s3/themes/power-series/abel-radius.tex",
+              "label": "thm-abel-first"
+            }
+          ]
         },
         {
           "page": 2,
-          "anchors": [
-            "thm-abel-first",
-            "def-radius"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/abel-radius.tex",
+              "label": "thm-abel-first"
+            },
+            {
+              "file": "s3/themes/power-series/abel-radius.tex",
+              "label": "def-radius"
+            }
+          ]
         },
         {
           "page": 3,
-          "anchors": [
-            "fig-interval",
-            "thm-cauchy-hadamard"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/abel-radius.tex",
+              "label": "fig-interval"
+            },
+            {
+              "file": "s3/themes/power-series/radius-formulas.tex",
+              "label": "thm-cauchy-hadamard"
+            }
+          ]
         },
         {
           "page": 4,
-          "anchors": [
-            "thm-cauchy-hadamard",
-            "cor-radius-limits"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/radius-formulas.tex",
+              "label": "thm-cauchy-hadamard"
+            },
+            {
+              "file": "s3/themes/power-series/radius-formulas.tex",
+              "label": "cor-radius-limits"
+            }
+          ]
         },
         {
           "page": 5,
-          "anchors": [
-            "cor-radius-limits",
-            "thm-power-uniform",
-            "thm-power-continuity"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/radius-formulas.tex",
+              "label": "cor-radius-limits"
+            },
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "thm-power-uniform"
+            },
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "thm-power-continuity"
+            }
+          ]
         },
         {
           "page": 6,
-          "anchors": [
-            "fig-disks",
-            "cor-abel-second",
-            "thm-power-derivative"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "fig-disks"
+            },
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "cor-abel-second"
+            },
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "thm-power-derivative"
+            }
+          ]
         },
         {
           "page": 7,
-          "anchors": [
-            "thm-power-derivative",
-            "cor-power-higher-derivatives"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "thm-power-derivative"
+            },
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "cor-power-higher-derivatives"
+            }
+          ]
         },
         {
           "page": 8,
-          "anchors": [
-            "thm-power-integral",
-            "thm-power-coefficients",
-            "cor-power-uniqueness"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/properties.tex",
+              "label": "thm-power-integral"
+            },
+            {
+              "file": "s3/themes/power-series/taylor.tex",
+              "label": "thm-power-coefficients"
+            },
+            {
+              "file": "s3/themes/power-series/taylor.tex",
+              "label": "cor-power-uniqueness"
+            }
+          ]
         },
         {
           "page": 9,
-          "anchors": [
-            "cor-power-uniqueness",
-            "def-taylor-series",
-            "def-analytic"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/taylor.tex",
+              "label": "cor-power-uniqueness"
+            },
+            {
+              "file": "s3/themes/power-series/taylor.tex",
+              "label": "def-taylor-series"
+            },
+            {
+              "file": "s3/themes/power-series/taylor.tex",
+              "label": "def-analytic"
+            }
+          ]
         },
         {
           "page": 10,
-          "anchors": [
-            "thm-taylor-sufficient"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/taylor.tex",
+              "label": "thm-taylor-sufficient"
+            }
+          ]
         },
         {
           "page": 11,
-          "anchors": [
-            "eq-exp-series",
-            "eq-sin-series",
-            "eq-cos-series",
-            "eq-log-series",
-            "fig-log-interval",
-            "eq-binomial-series"
-          ],
-          "reviewed": true
+          "reviewed": true,
+          "targets": [
+            {
+              "file": "s3/themes/power-series/maclaurin.tex",
+              "label": "eq-exp-series"
+            },
+            {
+              "file": "s3/themes/power-series/maclaurin.tex",
+              "label": "eq-sin-series"
+            },
+            {
+              "file": "s3/themes/power-series/maclaurin.tex",
+              "label": "eq-cos-series"
+            },
+            {
+              "file": "s3/themes/power-series/maclaurin.tex",
+              "label": "eq-log-series"
+            },
+            {
+              "file": "s3/themes/power-series/maclaurin.tex",
+              "label": "fig-log-interval"
+            },
+            {
+              "file": "s3/themes/power-series/maclaurin.tex",
+              "label": "eq-binomial-series"
+            }
+          ]
         }
-      ]
+      ],
+      "theme": "sec-power-series"
     }
-  ]
+  ],
+  "content_inventory": {
+    "parts": [
+      {
+        "title": "Функциональные последовательности",
+        "label": "sec-sequences"
+      },
+      {
+        "title": "Функциональные ряды",
+        "label": "sec-series"
+      },
+      {
+        "title": "Степенные ряды",
+        "label": "sec-power-series"
+      }
+    ],
+    "objects": {
+      "def-bounded": {
+        "number": "1.1",
+        "kind": "def"
+      },
+      "eq-sup-norm": {
+        "number": "1.1",
+        "kind": "eq"
+      },
+      "def-uniform-sequence": {
+        "number": "1.2",
+        "kind": "def"
+      },
+      "eq-uniform-quantifiers": {
+        "number": "1.2",
+        "kind": "eq"
+      },
+      "def-pointwise": {
+        "number": "1.3",
+        "kind": "def"
+      },
+      "thm-completeness": {
+        "number": "1.1",
+        "kind": "thm"
+      },
+      "thm-sequence-operations": {
+        "number": "1.2",
+        "kind": "thm"
+      },
+      "thm-add-point": {
+        "number": "1.3",
+        "kind": "thm"
+      },
+      "thm-continuity-sequence": {
+        "number": "1.4",
+        "kind": "thm"
+      },
+      "exm-powers-nonuniform": {
+        "number": "1.1",
+        "kind": "exm"
+      },
+      "cor-interchange-limits": {
+        "number": "1.1",
+        "kind": "cor"
+      },
+      "eq-interchange-limits": {
+        "number": "1.3",
+        "kind": "eq"
+      },
+      "thm-integrate-sequence": {
+        "number": "1.5",
+        "kind": "thm"
+      },
+      "eq-integrate-sequence": {
+        "number": "1.4",
+        "kind": "eq"
+      },
+      "thm-differentiate-sequence": {
+        "number": "1.6",
+        "kind": "thm"
+      },
+      "def-functional-series": {
+        "number": "2.1",
+        "kind": "def"
+      },
+      "def-uniform-series": {
+        "number": "2.2",
+        "kind": "def"
+      },
+      "eq-series-remainder": {
+        "number": "2.1",
+        "kind": "eq"
+      },
+      "thm-series-necessary": {
+        "number": "2.1",
+        "kind": "thm"
+      },
+      "exm-geometric-series": {
+        "number": "2.1",
+        "kind": "exm"
+      },
+      "exm-telescoping-series": {
+        "number": "2.2",
+        "kind": "exm"
+      },
+      "fig-telescoping": {
+        "number": "2.1",
+        "kind": "fig"
+      },
+      "thm-series-linear": {
+        "number": "2.2",
+        "kind": "thm"
+      },
+      "thm-series-tail": {
+        "number": "2.3",
+        "kind": "thm"
+      },
+      "thm-series-cauchy": {
+        "number": "2.4",
+        "kind": "thm"
+      },
+      "eq-series-cauchy": {
+        "number": "2.2",
+        "kind": "eq"
+      },
+      "thm-weierstrass": {
+        "number": "2.5",
+        "kind": "thm"
+      },
+      "exm-weierstrass-geometric": {
+        "number": "2.3",
+        "kind": "exm"
+      },
+      "exm-alternating-functional": {
+        "number": "2.4",
+        "kind": "exm"
+      },
+      "exm-absolute-not-uniform": {
+        "number": "2.5",
+        "kind": "exm"
+      },
+      "thm-functional-majorant": {
+        "number": "2.6",
+        "kind": "thm"
+      },
+      "thm-dirichlet": {
+        "number": "2.7",
+        "kind": "thm"
+      },
+      "thm-abel-test": {
+        "number": "2.8",
+        "kind": "thm"
+      },
+      "thm-series-continuity": {
+        "number": "2.9",
+        "kind": "thm"
+      },
+      "cor-series-limit": {
+        "number": "2.1",
+        "kind": "cor"
+      },
+      "thm-series-integral": {
+        "number": "2.10",
+        "kind": "thm"
+      },
+      "eq-series-integral": {
+        "number": "2.3",
+        "kind": "eq"
+      },
+      "thm-series-derivative": {
+        "number": "2.11",
+        "kind": "thm"
+      },
+      "eq-series-derivative": {
+        "number": "2.4",
+        "kind": "eq"
+      },
+      "def-power-series": {
+        "number": "3.1",
+        "kind": "def"
+      },
+      "eq-power-series": {
+        "number": "3.1",
+        "kind": "eq"
+      },
+      "thm-abel-first": {
+        "number": "3.1",
+        "kind": "thm"
+      },
+      "def-radius": {
+        "number": "3.2",
+        "kind": "def"
+      },
+      "fig-interval": {
+        "number": "3.1",
+        "kind": "fig"
+      },
+      "thm-cauchy-hadamard": {
+        "number": "3.2",
+        "kind": "thm"
+      },
+      "eq-cauchy-hadamard": {
+        "number": "3.2",
+        "kind": "eq"
+      },
+      "cor-radius-limits": {
+        "number": "3.1",
+        "kind": "cor"
+      },
+      "eq-radius-ratio": {
+        "number": "3.3",
+        "kind": "eq"
+      },
+      "thm-power-uniform": {
+        "number": "3.3",
+        "kind": "thm"
+      },
+      "thm-power-continuity": {
+        "number": "3.4",
+        "kind": "thm"
+      },
+      "fig-disks": {
+        "number": "3.2",
+        "kind": "fig"
+      },
+      "cor-abel-second": {
+        "number": "3.2",
+        "kind": "cor"
+      },
+      "eq-abel-radial": {
+        "number": "3.4",
+        "kind": "eq"
+      },
+      "thm-power-derivative": {
+        "number": "3.5",
+        "kind": "thm"
+      },
+      "eq-power-derivative": {
+        "number": "3.5",
+        "kind": "eq"
+      },
+      "cor-power-higher-derivatives": {
+        "number": "3.3",
+        "kind": "cor"
+      },
+      "eq-power-higher-derivatives": {
+        "number": "3.6",
+        "kind": "eq"
+      },
+      "thm-power-integral": {
+        "number": "3.6",
+        "kind": "thm"
+      },
+      "eq-power-integral": {
+        "number": "3.7",
+        "kind": "eq"
+      },
+      "thm-power-coefficients": {
+        "number": "3.7",
+        "kind": "thm"
+      },
+      "eq-taylor-coefficients": {
+        "number": "3.8",
+        "kind": "eq"
+      },
+      "cor-power-uniqueness": {
+        "number": "3.4",
+        "kind": "cor"
+      },
+      "def-taylor-series": {
+        "number": "3.3",
+        "kind": "def"
+      },
+      "eq-taylor-series": {
+        "number": "3.9",
+        "kind": "eq"
+      },
+      "def-analytic": {
+        "number": "3.4",
+        "kind": "def"
+      },
+      "thm-taylor-sufficient": {
+        "number": "3.8",
+        "kind": "thm"
+      },
+      "eq-exp-series": {
+        "number": "3.10",
+        "kind": "eq"
+      },
+      "eq-sin-series": {
+        "number": "3.11",
+        "kind": "eq"
+      },
+      "eq-cos-series": {
+        "number": "3.12",
+        "kind": "eq"
+      },
+      "eq-log-series": {
+        "number": "3.13",
+        "kind": "eq"
+      },
+      "fig-log-interval": {
+        "number": "3.3",
+        "kind": "fig"
+      },
+      "eq-binomial-series": {
+        "number": "3.14",
+        "kind": "eq"
+      }
+    },
+    "proofs": 28,
+    "display_math": 74,
+    "figures": {
+      "fig-telescoping": "telescoping",
+      "fig-interval": "interval",
+      "fig-disks": "disks",
+      "fig-log-interval": "log-interval"
+    }
+  }
 }

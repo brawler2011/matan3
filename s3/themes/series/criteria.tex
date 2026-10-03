@@ -1,0 +1,116 @@
+\section{Простейшие свойства и признаки}\label{sec-series-02}
+
+\begin{theorem}[Линейность]\label{thm-series-linear}
+
+Если \(\sum u_n\) и \(\sum v_n\) равномерно сходятся на \(\Omega\), то для \(\alpha,\beta\in\mathbb C\) \[
+\sum_{n=1}^\infty(\alpha u_n+\beta v_n)
+=\alpha\sum_{n=1}^\infty u_n+\beta\sum_{n=1}^\infty v_n,
+\] причём ряд слева также сходится равномерно.
+
+\end{theorem}
+
+\begin{proof}
+
+Применяем теорему \ref{thm-sequence-operations} к частичным суммам двух рядов.
+
+\end{proof}
+
+\begin{theorem}[Остатки ряда]\label{thm-series-tail}
+
+Если \(\sum u_n\) сходится поточечно на \(\Omega\), то он сходится равномерно на \(\Omega\) тогда и только тогда, когда \(r_m\rightrightarrows0\) на \(\Omega\).
+
+При каждом фиксированном \(m\) равномерная сходимость \(\sum_{n=1}^\infty u_n\) эквивалентна равномерной сходимости хвоста \(\sum_{n=m+1}^\infty u_n\).
+
+\end{theorem}
+
+\begin{proof}
+
+Первое утверждение следует из формулы \eqref{eq-series-remainder}. Во втором при добавлении или удалении конечной суммы разность частичной суммы и предела не меняется.
+
+\end{proof}
+
+\begin{theorem}[Критерий Коши]\label{thm-series-cauchy}
+
+Ряд \(\sum u_n(x)\) равномерно сходится на \(\Omega\) тогда и только тогда, когда
+
+\begin{equation}
+\forall\varepsilon>0\ \exists N\ \forall n>N\ \forall p\in\mathbb N:
+\quad\sup_{x\in\Omega}\left|\sum_{k=n+1}^{n+p}u_k(x)\right|<\varepsilon.
+\label{eq-series-cauchy}
+\end{equation}
+
+\end{theorem}
+
+\begin{proof}
+
+Необходимость следует из равномерной сходимости частичных сумм. Для достаточности условие даёт числовой критерий Коши в каждой точке, то есть предел \(S(x)\). Применяем оценку с \(\varepsilon/2\) и переходим к пределу \(p\to\infty\): \(\sup_x|S(x)-S_n(x)|\le\varepsilon/2<\varepsilon\).
+
+Это рассуждение не требует ограниченности отдельных \(u_n\) или \(S_n\).
+
+\end{proof}
+
+\begin{theorem}[Признак Вейерштрасса]\label{thm-weierstrass}
+
+Пусть \(|u_n(x)|\le a_n\) для всех \(x\in\Omega\), \(n\in\mathbb N\), где \(a_n\ge0\) и числовой ряд \(\sum a_n\) сходится. Тогда \(\sum u_n(x)\) сходится равномерно на \(\Omega\) и абсолютно в каждой точке \(\Omega\).
+
+\end{theorem}
+
+\begin{proof}
+
+\[
+\sup_{x\in\Omega}\left|\sum_{k=n+1}^{n+p}u_k(x)\right|
+\le\sum_{k=n+1}^{n+p}a_k.
+\] По критерию Коши для \(\sum a_n\) правая часть мала одновременно для всех \(p\). Применяем теорему \ref{thm-series-cauchy}. Для фиксированного \(x\) сходимость \(\sum|u_n(x)|\) следует из сравнения с \(\sum a_n\).
+
+\end{proof}
+
+Ряд \(\sum a_n\) называется \textbf{мажорирующим}. Естественный выбор \(a_n=\lVert u_n\rVert_\infty\) пригоден, если эти нормы конечны и их ряд сходится.
+
+Мажоранты неотрицательны и вещественны: комплексная величина не может стоять справа в неравенстве \(|u_n(x)|\le a_n\).
+
+\begin{example}[Мажоранта геометрического ряда]\label{exm-weierstrass-geometric}
+
+На \([-q,q]\), \(0<q<1\), выполняется \(|x^n|\le q^n\). Ряд \(\sum_{n=1}^\infty q^n\) сходится, поэтому теорема \ref{thm-weierstrass} ещё раз даёт равномерную сходимость геометрического ряда.
+
+На \((-1,1)\) тот же ряд сходится абсолютно в каждой точке, но не равномерно.
+
+\end{example}
+
+\begin{example}[Условная и равномерная сходимость]\label{exm-alternating-functional}
+
+Ряд \[
+\sum_{n=1}^\infty\frac{(-1)^{n+1}}{x^2+n},\qquad x\in\mathbb R,
+\] сходится в каждой точке по признаку Лейбница. При этом \[
+\lVert u_n\rVert_\infty=\frac1n\longrightarrow0,
+\] но ряд из этих норм расходится, и признак Вейерштрасса неприменим.
+
+Оценка остатка знакопеременного ряда даёт \[
+|r_n(x)|\le\frac1{x^2+n+1}\le\frac1{n+1}.
+\] Поэтому ряд всё же сходится равномерно на всей \(\mathbb R\).
+
+Абсолютной сходимости нет ни в одной точке: при фиксированном \(x\) и достаточно больших \(n\) имеем \(x^2+n\le2n\), откуда \(1/(x^2+n)\ge1/(2n)\).
+
+\end{example}
+
+\begin{example}[Абсолютная сходимость не гарантирует равномерную]\label{exm-absolute-not-uniform}
+
+Ряд \(\sum_{n=1}^\infty(1-x)x^n\) сходится абсолютно на \((-1,1]\): при \(|x|<1\) это геометрический ряд, при \(x=1\) все члены нулевые. Его сумма равна \(x\) при \(-1<x<1\) и нулю при \(x=1\). Она разрывна в \(1\), следовательно сходимость неравномерна.
+
+\end{example}
+
+Таким образом, абсолютная поточечная и равномерная сходимость не следуют друг из друга.
+
+\begin{theorem}[Функциональная мажоранта]\label{thm-functional-majorant}
+
+Если \(|u_n(x)|\le a_n(x)\), \(a_n(x)\ge0\), а \(\sum a_n(x)\) сходится равномерно на \(\Omega\), то \(\sum u_n(x)\) также сходится равномерно на \(\Omega\).
+
+\end{theorem}
+
+\begin{proof}
+
+По формуле \eqref{eq-series-cauchy} и неотрицательности \(a_k\), \[
+\sup_x\left|\sum_{k=n+1}^{n+p}u_k(x)\right|
+\le\sup_x\sum_{k=n+1}^{n+p}a_k(x)\longrightarrow0
+\] равномерно по \(p\).
+
+\end{proof}

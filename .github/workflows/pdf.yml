@@ -1,0 +1,74 @@
+name: Build and verify colored PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 's3/**'
+      - '!s3/notes-colored.pdf'
+      - 'scripts/check_pdf.py'
+      - 'sources-manifest.json'
+      - 'Makefile'
+      - '.github/workflows/pdf.yml'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdf-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install LuaLaTeX, latexmk and PDF inspection tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latexmk texlive-luatex texlive-latex-extra texlive-lang-cyrillic texlive-fonts-recommended poppler-utils
+      - name: Build and verify PDF
+        run: make check
+      - name: Save the verified colored PDF
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: notes-colored
+          path: s3/notes-colored.pdf
+          if-no-files-found: error
+
+  update-pdf:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the source commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Download the verified PDF
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: notes-colored
+          path: s3
+      - name: Update PDF in main
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          git fetch origin main
+          if [ "$(git rev-parse origin/main)" != "$SOURCE_SHA" ]; then
+            echo 'A newer source commit will build its own PDF.'
+            exit 0
+          fi
+          git add -- s3/notes-colored.pdf
+          if git diff --cached --quiet; then
+            echo 'The checked PDF is already current.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update verified colored PDF'
+          git push origin HEAD:main

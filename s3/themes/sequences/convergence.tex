@@ -1,0 +1,70 @@
+\section{\texorpdfstring{Равномерная сходимость. Пространство \(\ell^\infty(\Omega)\)}{Равномерная сходимость. Пространство ограниченных функций}}\label{sec-sequences-01}
+
+Напоминание: нормированное пространство, полное относительно метрики, порождённой нормой, называется \textbf{банаховым}.
+
+В конечномерном пространстве эквивалентны все \emph{нормы}. В бесконечномерном пространстве нормы могут быть неэквивалентны.
+
+\begin{definition}[Пространство ограниченных функций]\label{def-bounded}
+
+\(\ell^\infty(\Omega)\) --- множество функций \(f:\Omega\to\mathbb C\), ограниченных по модулю: \[
+\exists C>0\quad\forall x\in\Omega:\quad |f(x)|\le C.
+\] На нём задаётся норма
+
+\begin{equation}
+\lVert f\rVert_\infty=\sup_{x\in\Omega}|f(x)|,
+\qquad d(f,g)=\lVert f-g\rVert_\infty.
+\label{eq-sup-norm}
+\end{equation}
+
+Метрика \(d\) называется чебышевским расстоянием.
+
+\end{definition}
+
+\begin{definition}[Равномерная сходимость]\label{def-uniform-sequence}
+
+Последовательность \(\{f_n\}_{n=1}^{\infty}\) равномерно сходится на \(\Omega\) к \(f\), если \[
+\lVert f_n-f\rVert_\infty\longrightarrow0.
+\] Эквивалентная запись:
+
+\begin{equation}
+\forall\varepsilon>0\ \exists N\ \forall n>N\ \forall x\in\Omega:
+\quad |f_n(x)-f(x)|<\varepsilon.
+\label{eq-uniform-quantifiers}
+\end{equation}
+
+Обозначение: \(f_n\rightrightarrows f\) на \(\Omega\).
+
+\end{definition}
+
+\begin{definition}[Поточечная сходимость]\label{def-pointwise}
+
+Для фиксированного \(x\) числовая последовательность \(f_n(x)\) может сходиться к \(f(x)\). Множество таких точек называется множеством поточечной сходимости. На нём \[
+\forall x\ \forall\varepsilon>0\ \exists N_x\ \forall n>N_x:
+\quad |f_n(x)-f(x)|<\varepsilon.
+\] В отличие от условия \eqref{eq-uniform-quantifiers}, номер \(N_x\) здесь может зависеть от точки.
+
+\end{definition}
+
+\begin{theorem}[Полнота \(\ell^\infty(\Omega)\)]\label{thm-completeness}
+
+Пространство \(\ell^\infty(\Omega)\) полно по норме \(\lVert \cdot\rVert_\infty\).
+
+\end{theorem}
+
+\begin{proof}
+
+Пусть \(\{f_n\}\) фундаментальна: \[
+\forall\varepsilon>0\ \exists N\ \forall n,k>N:
+\quad \lVert f_n-f_k\rVert_\infty<\varepsilon.
+\] Для каждого \(x\) последовательность \(\{f_n(x)\}\) фундаментальна в \(\mathbb C\). По полноте \(\mathbb C\) существует \(f(x)=\lim_n f_n(x)\).
+
+Сначала покажем ограниченность норм \(\lVert f_n\rVert_\infty\). В условии фундаментальности возьмём \(\varepsilon=1\) и положим \[
+M=\max\{\lVert f_1\rVert_\infty,\ldots,\lVert f_{N+1}\rVert_\infty\}.
+\] Для \(n>N\) имеем \(\lVert f_n\rVert_\infty\le\lVert f_n-f_{N+1}\rVert_\infty+\lVert f_{N+1}\rVert_\infty\le1+M\). Поэтому все \(f_n\) ограничены одной константой; переход к поточечному пределу даёт \(|f(x)|\le1+M\). Значит, \(f\in\ell^\infty(\Omega)\).
+
+Теперь для заданного \(\varepsilon>0\) выбираем \(N\) с \(\lVert f_n-f_m\rVert_\infty<\varepsilon/2\) при \(m,n>N\). Переходя к пределу \(m\to\infty\) для каждого \(x\), получаем \[
+|f_n(x)-f(x)|\le\varepsilon/2,
+\qquad \lVert f_n-f\rVert_\infty\le\varepsilon/2<\varepsilon.
+\] Итак, \(f_n\rightrightarrows f\).
+
+\end{proof}

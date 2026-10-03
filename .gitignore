@@ -1,12 +1,6 @@
-# Рукописные оригиналы хранятся только локально.
+# Рукописные оригиналы остаются локальными.
 /*.pdf
 /sources/
-/_book/
-/.quarto/
-/.tools/
-/artifacts/
-/index.typ
-/index.pdf
+/s3/.build/
 __pycache__/
-
-**/*.quarto_ipynb
+*.pyc

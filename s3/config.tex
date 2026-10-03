@@ -1,0 +1,105 @@
+% Оформление: ivanshemidko/algebra-notes, s2/main.tex,
+% commit d52e89ab46b905aac035e556794af91aec7c86ef.
+\usepackage{fontspec}
+% Project-local installation keeps local and CI font files identical.
+\setmainfont{cmunrm.ttf}[
+  Path=fonts/,
+  BoldFont=cmunbx.ttf,
+  ItalicFont=cmunti.ttf,
+  BoldItalicFont=cmunbi.ttf
+]
+\usepackage[english,russian]{babel}
+\usepackage{amsmath,amssymb,mathtools,amsthm}
+% Unicode maps for traditional Computer Modern math fonts (search/copy text).
+\pdfvariable gentounicode=1
+\protected\def\pdfglyphtounicode{\pdfextension glyphtounicode}
+\input{glyphtounicode.tex}
+% The standard map omits CMEX's sized delimiter glyph names.
+\ExplSyntaxOn
+\clist_map_inline:nn {big,Big,bigg,Bigg} {
+  \pdfglyphtounicode{parenleft#1}{0028}
+  \pdfglyphtounicode{parenright#1}{0029}
+  \pdfglyphtounicode{braceleft#1}{007B}
+  \pdfglyphtounicode{braceright#1}{007D}
+  \pdfglyphtounicode{bracketleft#1}{005B}
+  \pdfglyphtounicode{bracketright#1}{005D}
+  \pdfglyphtounicode{floorleft#1}{230A}
+  \pdfglyphtounicode{floorright#1}{230B}
+  \pdfglyphtounicode{ceilingleft#1}{2308}
+  \pdfglyphtounicode{ceilingright#1}{2309}
+  \pdfglyphtounicode{angbracketleft#1}{27E8}
+  \pdfglyphtounicode{angbracketright#1}{27E9}
+  \pdfglyphtounicode{slash#1}{002F}
+  \pdfglyphtounicode{backslash#1}{005C}
+}
+\ExplSyntaxOff
+\usepackage{geometry}
+\geometry{left=22mm,right=22mm,top=25mm,bottom=27mm,heightrounded}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems,breakable,skins}
+\usepackage{graphicx,caption}
+\captionsetup{font=small,labelfont=bf,hypcap=false}
+
+\definecolor{cbBlueBack}{RGB}{246,249,252}
+\definecolor{cbGreenBack}{RGB}{246,251,248}
+\definecolor{cbOrangeBack}{RGB}{252,249,242}
+\definecolor{cbPurpleBack}{RGB}{249,247,252}
+\definecolor{cbGrayBack}{RGB}{249,249,249}
+\definecolor{cbBlue}{RGB}{42,87,132}
+\definecolor{cbGreen}{RGB}{52,110,72}
+\definecolor{cbOrange}{RGB}{140,98,0}
+\definecolor{cbPurple}{RGB}{93,78,140}
+\definecolor{cbGray}{RGB}{80,80,80}
+
+\newtheoremstyle{mystatement}{8pt}{8pt}{\itshape}{}{\bfseries}{.}{\newline}{}
+\newtheoremstyle{mydefinition}{8pt}{8pt}{\normalfont}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{mystatement}
+\newtheorem{theorem}{Теорема}[part]
+\newtheorem{cor}{Следствие}[part]
+\theoremstyle{mydefinition}
+\newtheorem{definition}{Определение}[part]
+\newtheorem{example}{Пример}[part]
+\numberwithin{equation}{part}
+\counterwithin{figure}{part}
+\tcbset{
+  enhanced,sharp corners,boxrule=0.5pt,
+  left=9pt,right=9pt,top=7pt,bottom=7pt,
+  before skip=8pt,after skip=8pt,breakable
+}
+\tcolorboxenvironment{theorem}{colback=cbBlueBack,colframe=cbGray!55,borderline west={1.6pt}{0pt}{cbBlue}}
+\tcolorboxenvironment{cor}{colback=cbPurpleBack,colframe=cbGray!55,borderline west={1.6pt}{0pt}{cbPurple}}
+\tcolorboxenvironment{definition}{colback=cbGreenBack,colframe=cbGreen!55!cbGray,borderline west={1.6pt}{0pt}{cbGreen}}
+\tcolorboxenvironment{example}{colback=cbOrangeBack,colframe=cbOrange!45!cbGray,borderline west={1.6pt}{0pt}{cbOrange}}
+
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,linkcolor=cbBlue,citecolor=cbBlue,urlcolor=cbBlue,
+  pdftitle={Математический анализ · III семестр},
+  pdfauthor={},pdfsubject={},pdfcreator={LuaLaTeX}
+}
+\linespread{1.0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\allowdisplaybreaks[1]
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{titlesec}
+\titleformat{\part}[block]{\Large\bfseries\centering}{}{0pt}{}
+\titlespacing*{\part}{0pt}{0pt}{12pt}
+\counterwithin{section}{part}
+\renewcommand{\thepart}{\arabic{part}}
+\usepackage{tocloft}
+\setlength{\cftsecnumwidth}{2.8em}
+\setlength{\cftsubsecnumwidth}{3.6em}
+\setcounter{tocdepth}{2}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\let\oldpart\part
+\renewcommand{\part}[1]{\oldpart{#1}\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{}
+\usepackage{etoolbox}
+\pretocmd{\part}{\newpage}{}{}
