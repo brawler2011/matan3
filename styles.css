@@ -1,0 +1,13 @@
+:root { --bs-link-color: #176b76; }
+main { line-height: 1.75; }
+.theorem { border-left: 3px solid #2b7a82; padding-left: 1rem; margin-block: 1.5rem; }
+.proof { margin-block: 1rem 2rem; }
+.source { color: var(--bs-secondary-color); font-size: .9rem; }
+.btn-primary { background-color: #176b76; border-color: #176b76; margin-block: .6rem 1rem; }
+figure img { max-width: 100%; height: auto; }
+@media (max-width: 600px) {
+  main { line-height: 1.65; }
+  .math.display { display: block; overflow-x: auto; overflow-y: hidden; max-width: 100%; padding-block: .4rem; }
+  .theorem { padding-left: .65rem; }
+  main .table { display: block; max-width: 100%; overflow-x: auto; }
+}

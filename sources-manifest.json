@@ -1,0 +1,273 @@
+{
+  "edition": "2026-10-03",
+  "sources": [
+    {
+      "file": "25,26_функциональные_последовательности.pdf",
+      "sha256": "12f50e080cdf930f85df8209b013dcdb02be9dfea47f262e353dad6a00126cd7",
+      "page_count": 9,
+      "chapter": "chapters/25-26.qmd",
+      "pages": [
+        {
+          "page": 1,
+          "anchors": [
+            "def-bounded",
+            "def-uniform-sequence",
+            "def-pointwise"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "anchors": [
+            "thm-completeness"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "anchors": [
+            "thm-sequence-operations",
+            "thm-add-point"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "anchors": [
+            "thm-add-point",
+            "thm-continuity-sequence"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "anchors": [
+            "thm-continuity-sequence",
+            "exm-powers-nonuniform",
+            "cor-interchange-limits"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "anchors": [
+            "cor-interchange-limits",
+            "thm-integrate-sequence"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "anchors": [
+            "thm-integrate-sequence"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "anchors": [
+            "thm-differentiate-sequence"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "anchors": [
+            "thm-differentiate-sequence"
+          ],
+          "reviewed": true
+        }
+      ]
+    },
+    {
+      "file": "27,28_функциональные_ряды.pdf",
+      "sha256": "9932d180c1f54ac17a8f49c9007095e0a7581c34c700cb4a8d3fae66e5515dc4",
+      "page_count": 9,
+      "chapter": "chapters/27-28.qmd",
+      "pages": [
+        {
+          "page": 1,
+          "anchors": [
+            "def-functional-series",
+            "def-uniform-series",
+            "thm-series-necessary"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "anchors": [
+            "exm-geometric-series",
+            "exm-telescoping-series",
+            "fig-telescoping"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "anchors": [
+            "exm-telescoping-series",
+            "thm-series-linear",
+            "thm-series-tail",
+            "thm-series-cauchy"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "anchors": [
+            "thm-series-cauchy",
+            "thm-weierstrass"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "anchors": [
+            "exm-weierstrass-geometric",
+            "exm-alternating-functional"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "anchors": [
+            "exm-alternating-functional",
+            "exm-absolute-not-uniform",
+            "thm-functional-majorant",
+            "thm-dirichlet"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "anchors": [
+            "thm-abel-test",
+            "thm-series-continuity",
+            "cor-series-limit"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "anchors": [
+            "cor-series-limit",
+            "thm-series-integral",
+            "thm-series-derivative"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "anchors": [
+            "thm-series-derivative"
+          ],
+          "reviewed": true
+        }
+      ]
+    },
+    {
+      "file": "29,30_степенные_ряды.pdf",
+      "sha256": "5179338b2beec45dab8418d8289714415359090f3bfdf78b36cf7b0a6c138712",
+      "page_count": 11,
+      "chapter": "chapters/29-30.qmd",
+      "pages": [
+        {
+          "page": 1,
+          "anchors": [
+            "def-power-series",
+            "thm-abel-first"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 2,
+          "anchors": [
+            "thm-abel-first",
+            "def-radius"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 3,
+          "anchors": [
+            "fig-interval",
+            "thm-cauchy-hadamard"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 4,
+          "anchors": [
+            "thm-cauchy-hadamard",
+            "cor-radius-limits"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 5,
+          "anchors": [
+            "cor-radius-limits",
+            "thm-power-uniform",
+            "thm-power-continuity"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 6,
+          "anchors": [
+            "fig-disks",
+            "cor-abel-second",
+            "thm-power-derivative"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 7,
+          "anchors": [
+            "thm-power-derivative",
+            "cor-power-higher-derivatives"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 8,
+          "anchors": [
+            "thm-power-integral",
+            "thm-power-coefficients",
+            "cor-power-uniqueness"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 9,
+          "anchors": [
+            "cor-power-uniqueness",
+            "def-taylor-series",
+            "def-analytic"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 10,
+          "anchors": [
+            "thm-taylor-sufficient"
+          ],
+          "reviewed": true
+        },
+        {
+          "page": 11,
+          "anchors": [
+            "eq-exp-series",
+            "eq-sin-series",
+            "eq-cos-series",
+            "eq-log-series",
+            "fig-log-interval",
+            "eq-binomial-series"
+          ],
+          "reviewed": true
+        }
+      ]
+    }
+  ]
+}

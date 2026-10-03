@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="235" viewBox="0 0 840 235" role="img" aria-labelledby="title">
+<title id="title">Сходимость вещественного ряда логарифма</title>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8" fill="#253d49"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Noto Sans, DejaVu Sans, sans-serif" font-size="18" fill="#253d49" stroke-linecap="round">
+<line x1="30" y1="127" x2="800" y2="127" stroke="#253d49" stroke-width="2" marker-end="url(#arrow)"/><line x1="185" y1="127" x2="645" y2="127" stroke="#176b76" stroke-width="7" /><circle cx="185" cy="127" r="7" fill="white" stroke="#bd6337" stroke-width="3"/><circle cx="645" cy="127" r="7" fill="#8564ae"/><text x="185" y="164" text-anchor="middle" fill="#253d49" font-size="18">−1</text><text x="415" y="164" text-anchor="middle" fill="#253d49" font-size="18">0</text><text x="645" y="164" text-anchor="middle" fill="#253d49" font-size="18">1</text><text x="415" y="65" text-anchor="middle" fill="#176b76" font-size="18">абсолютная сходимость</text><text x="645" y="100" text-anchor="middle" fill="#8564ae" font-size="18">условная</text><text x="185" y="100" text-anchor="middle" fill="#bd6337" font-size="18">расходится</text><text x="415" y="208" text-anchor="middle" fill="#253d49" font-size="18">Σ (−1)ⁿ⁺¹ xⁿ/n = ln(1 + x),   −1 &lt; x ≤ 1</text>
+</g></svg>
