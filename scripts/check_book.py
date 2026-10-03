@@ -89,6 +89,7 @@ def check_output(output):
     pages = {p.resolve(): Page(p) for p in output.rglob('*.html')}
     require((output / 'index.html') in pages, 'Нет главной страницы')
     manifest = json.loads((ROOT / 'sources-manifest.json').read_text())
+    expected_equation_numbers = []
     for source in manifest['sources']:
         path = output / Path(source['chapter']).with_suffix('.html')
         require(path in pages, f'Нет HTML главы: {path}')
@@ -96,6 +97,7 @@ def check_output(output):
             for anchor in page['anchors']:
                 require(anchor in pages[path].ids, f'В HTML пропал якорь {anchor}')
         require(pages[path].math > 0, f'В главе нет формул: {path}')
+        expected_equation_numbers.extend(re.findall(r'\\tag\{([^}]+)\}', path.read_text()))
     link_count = 0
     for path, page in pages.items():
         for link in page.links:
@@ -122,6 +124,18 @@ def check_output(output):
     for title in ['Лекции 25–26', 'Лекции 27–28', 'Лекции 29–30', 'История изменений']:
         require(title in pdf_text, f'В PDF нет раздела: {title}')
     require('\ufffd' not in pdf_text, 'В PDF есть потерянные символы')
+    pdf_equation_numbers = re.findall(r'\s{3,}\((\d+\.\d+)\)\s*$', pdf_text, re.M)
+    require(pdf_equation_numbers == expected_equation_numbers,
+            'Номера формул в PDF и HTML различаются')
+    bounds = ET.fromstring(subprocess.check_output(['pdftotext', '-bbox', str(pdf), '-']))
+    namespace = {'x': 'http://www.w3.org/1999/xhtml'}
+    for number, page in enumerate(bounds.findall('.//x:page', namespace), 1):
+        width, height = float(page.attrib['width']), float(page.attrib['height'])
+        for word in page.findall('x:word', namespace):
+            box = {key: float(value) for key, value in word.attrib.items()}
+            require(box['xMin'] >= 18 and box['xMax'] <= width - 18
+                    and box['yMin'] >= 10 and box['yMax'] <= height - 10,
+                    f'Текст у края PDF, страница {number}: {word.text}')
     require(set(p.name for p in output.rglob('*.pdf')) == {'matan-sem3.pdf'},
             'В публикацию попали посторонние PDF')
     for forbidden in ['sources', 'chapters/25-26.qmd', 'sources-manifest.json', 'README.md']:

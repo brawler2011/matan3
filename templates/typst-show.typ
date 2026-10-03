@@ -87,3 +87,6 @@ $endif$
 #show figure.where(kind: "definition"): set align(left)
 #show figure.where(kind: "corollary"): set align(left)
 #show figure.where(kind: "example"): set align(left)
+
+// Only labelled equations receive explicit numbering from Quarto.
+#set math.equation(numbering: none)
