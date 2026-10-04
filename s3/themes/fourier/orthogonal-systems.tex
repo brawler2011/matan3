@@ -1,0 +1,82 @@
+\section{Ортогональные системы функций}\label{sec-fourier-orthogonal}
+
+Здесь рассматриваются вещественные функции на отрезке \([a,b]\), \(a<b\). Интегралы понимаются по Риману; далее также допускаются абсолютно сходящиеся несобственные интегралы с конечным числом особых точек.
+
+\begin{definition}[Скалярное произведение и норма]\label{def-function-inner-product}
+
+Для \(f,g\in C([a,b])\) положим
+\begin{equation}
+(f,g)=\int_a^b f(x)g(x)\,dx,
+\qquad
+\|f\|=\sqrt{(f,f)}=\left(\int_a^b f^2(x)\,dx\right)^{1/2}.
+\label{eq-function-inner-product}
+\end{equation}
+Это скалярное произведение и порождённая им норма на \(C([a,b])\).
+
+\end{definition}
+
+Действительно, симметрия и билинейность следуют из свойств интеграла. Если непрерывная функция \(f\) ненулевая хотя бы в одной точке, то \(f^2\) положительна на некотором участке отрезка, поэтому \((f,f)>0\).
+
+\begin{definition}[Ортогональная система]\label{def-orthogonal-system}
+
+Система ненулевых функций \(\varphi_1,\varphi_2,\ldots\in C([a,b])\) называется ортогональной на \([a,b]\), если
+\[
+(\varphi_n,\varphi_m)=\int_a^b\varphi_n(x)\varphi_m(x)\,dx=0
+\qquad(n\ne m).
+\]
+Для каждого \(n\) имеем \(\|\varphi_n\|^2>0\).
+
+\end{definition}
+
+\begin{example}[Тригонометрическая система]\label{exm-trigonometric-system}
+
+Система
+\[
+1,\ \sin x,\ \cos x,\ \sin 2x,\ \cos 2x,\ldots
+\]
+ортогональна на \([-\pi,\pi]\). Для \(n,m\ge1\) справедливы равенства
+\begin{equation}
+\begin{aligned}
+\int_{-\pi}^{\pi}\sin nx\cos mx\,dx&=0,\\
+\int_{-\pi}^{\pi}\cos nx\cos mx\,dx
+&=\begin{cases}0,&n\ne m,\\ \pi,&n=m,\end{cases}\\
+\int_{-\pi}^{\pi}\sin nx\sin mx\,dx
+&=\begin{cases}0,&n\ne m,\\ \pi,&n=m.\end{cases}
+\end{aligned}
+\label{eq-trigonometric-orthogonality}
+\end{equation}
+Кроме того,
+\[
+\int_{-\pi}^{\pi}\cos nx\,dx
+=\int_{-\pi}^{\pi}\sin nx\,dx=0,
+\qquad
+\|1\|^2=2\pi,\quad
+\|\cos nx\|^2=\|\sin nx\|^2=\pi.
+\]
+
+\end{example}
+
+\begin{proof}
+
+Произведение \(\sin nx\cos mx\) нечётно, поэтому его интеграл на симметричном отрезке равен нулю. Используем формулы
+\[
+\begin{aligned}
+\cos nx\cos mx&=\tfrac12\bigl(\cos(n-m)x+\cos(n+m)x\bigr),\\
+\sin nx\sin mx&=\tfrac12\bigl(\cos(n-m)x-\cos(n+m)x\bigr).
+\end{aligned}
+\]
+Интеграл \(\cos kx\) на \([-\pi,\pi]\) равен нулю при целом \(k\ne0\) и равен \(2\pi\) при \(k=0\). Это даёт все равенства \eqref{eq-trigonometric-orthogonality} и значения норм. Ортогональность постоянной функции остальным следует из интегралов синуса и косинуса.\qedhere
+
+\end{proof}
+
+\begin{example}[Многочлены Лежандра]\label{exm-legendre-system}
+
+Другой пример ортогональной системы на \([-1,1]\) --- многочлены Лежандра:
+\begin{equation}
+L_n(x)=\frac1{2^n n!}\frac{d^n}{dx^n}(x^2-1)^n,
+\qquad n=0,1,2,\ldots
+\label{eq-legendre-rodrigues}
+\end{equation}
+Это формула Родрига. Например, \(L_0(x)=1\), \(L_1(x)=x\), \(L_2(x)=(3x^2-1)/2\).
+
+\end{example}

@@ -12,7 +12,8 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 S3 = ROOT / 's3'
-ENVIRONMENTS = {'def': 'definition', 'thm': 'theorem', 'cor': 'cor', 'exm': 'example'}
+ENVIRONMENTS = {'def': 'definition', 'thm': 'theorem', 'lem': 'lemma',
+                'cor': 'cor', 'exm': 'example'}
 
 
 def require(condition, message):
@@ -69,7 +70,7 @@ def check_sources():
         require(path.read_bytes().startswith(b'%PDF-'), f'Invalid vector figure: {name}')
         require(len(command('pdfimages', '-list', str(path)).splitlines()) == 2,
                 f'Raster data in illustration: {name}')
-    pages = 0
+    pages, photos = 0, set()
     for source in manifest['sources']:
         require([p['page'] for p in source['pages']] == list(range(1, source['page_count'] + 1)),
                 f'Incomplete manuscript map: {source["file"]}')
@@ -79,10 +80,21 @@ def check_sources():
                 require(labels.get(target['label']) == ROOT / target['file'],
                         f'Incorrect manuscript target: {target}')
         original = ROOT / source['file']
+        if source.get('kind') == 'photo':
+            require(original.is_relative_to(ROOT / 'lecture4'),
+                    f'Photo outside lecture4: {source["file"]}')
+            require(source['file'] not in photos, f'Repeated photo: {source["file"]}')
+            photos.add(source['file'])
+            require(source.get('selection') in {'lecture', 'mixed'},
+                    f'Missing photo selection: {source["file"]}')
+            require(source['selection'] != 'mixed' or source.get('excluded_regions'),
+                    f'Missing practice boundary: {source["file"]}')
         if original.exists():
             require(hashlib.sha256(original.read_bytes()).hexdigest() == source['sha256'],
                     f'Manuscript changed: {original.name}')
         pages += len(source['pages'])
+    local_photos = {str(p.relative_to(ROOT)) for p in (ROOT / 'lecture4').glob('*.jpg')}
+    require(local_photos.issubset(photos), 'A lecture4 photo has not been reviewed')
     print(f'Sources: {len(parts)} themes, {len(labels)} labels, {pages} mapped manuscript pages; '
           f'{inventory["proofs"]} proofs and {inventory["display_math"]} display equations.')
     return inventory
@@ -111,7 +123,8 @@ def check_pdf(inventory):
                           r'\b\d{2}\.\d{2}\.\d{4}\b|\?\?|\ufffd', text, re.I),
             'Editorial material, date or unresolved symbols in PDF')
     require(text.count('Доказательство.') == inventory['proofs'], 'Lost rendered proof')
-    names = {'def': 'Определение', 'thm': 'Теорема', 'cor': 'Следствие', 'exm': 'Пример', 'fig': 'Рис.'}
+    names = {'def': 'Определение', 'thm': 'Теорема', 'lem': 'Лемма',
+             'cor': 'Следствие', 'exm': 'Пример', 'fig': 'Рис.'}
     for obj in inventory['objects'].values():
         if obj['kind'] in names:
             require(names[obj['kind']] + ' ' + obj['number'] in normalized,
@@ -132,7 +145,8 @@ def check_pdf(inventory):
                     f'Clipped text on page {number}: {word.text}')
     fonts = command('pdffonts', str(pdf))
     require('CMUSerif' in fonts, 'CMU Serif was not embedded')
-    print(f'PDF: {len(pages)} pages; original object numbers, references, fonts, margins and 4 vector figures verified.')
+    print(f'PDF: {len(pages)} pages; object numbers, references, fonts, margins and '
+          f'{len(inventory["figures"])} vector figures verified.')
 
 
 def main():

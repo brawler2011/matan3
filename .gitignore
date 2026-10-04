@@ -1,6 +1,7 @@
 # Рукописные оригиналы остаются локальными.
 /*.pdf
 /sources/
+/lecture4/*.jpg
 /s3/.build/
 __pycache__/
 *.pyc
