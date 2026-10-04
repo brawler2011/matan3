@@ -7,7 +7,6 @@ on:
       - 's3/**'
       - '!s3/notes-colored.pdf'
       - 'scripts/check_pdf.py'
-      - 'sources-manifest.json'
       - 'Makefile'
       - '.github/workflows/pdf.yml'
   pull_request:

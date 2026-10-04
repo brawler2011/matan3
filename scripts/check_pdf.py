@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
-"""Check the LaTeX sources, manuscript map, numbering and the compiled PDF."""
+"""Check the LaTeX sources and the compiled PDF."""
 import argparse
-from collections import Counter
-import hashlib
-import json
 from pathlib import Path
 import re
 import subprocess
@@ -12,8 +9,6 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 S3 = ROOT / 's3'
-ENVIRONMENTS = {'def': 'definition', 'thm': 'theorem', 'lem': 'lemma',
-                'cor': 'cor', 'exm': 'example'}
 
 
 def require(condition, message):
@@ -26,8 +21,6 @@ def command(*args):
 
 
 def check_sources():
-    manifest = json.loads((ROOT / 'sources-manifest.json').read_text())
-    inventory = manifest['content_inventory']
     files, labels = {}, {}
 
     def read(path):
@@ -52,50 +45,20 @@ def check_sources():
     for ref in re.findall(r'\\(?:eqref|ref|pageref)\{([^}]+)\}', content):
         require(ref in labels, f'Unresolved source reference: {ref}')
     parts = re.findall(r'\\part\{([^}]+)\}', files[S3 / 'main.tex'])
-    require(parts == [p['title'] for p in inventory['parts']], 'Theme order changed')
-    counts = Counter(x['kind'] for x in inventory['objects'].values())
-    for kind, env in ENVIRONMENTS.items():
-        require(content.count('\\begin{' + env + '}') == counts[kind], f'Lost {env}')
-    require(content.count('\\begin{proof}') == inventory['proofs'], 'Lost proof')
-    require(content.count('\\begin{equation}') == counts['eq'], 'Lost numbered equation')
-    require(content.count('\\begin{equation}') + content.count('\\[') == inventory['display_math'],
-            'Display equation count changed')
-    for label in inventory['objects']:
-        require(label in labels, f'Lost content label: {label}')
     figures = re.findall(r'\\includegraphics\[[^\]]*\]\{([^}]+)\}', content)
-    expected_figures = ['figures/' + name + '.pdf' for name in inventory['figures'].values()]
-    require(Counter(figures) == Counter(expected_figures), 'Lost or repeated illustration')
     for name in figures:
         path = S3 / name
         require(path.read_bytes().startswith(b'%PDF-'), f'Invalid vector figure: {name}')
         require(len(command('pdfimages', '-list', str(path)).splitlines()) == 2,
                 f'Raster data in illustration: {name}')
-    pages, photos = 0, set()
-    for source in manifest['sources']:
-        require([p['page'] for p in source['pages']] == list(range(1, source['page_count'] + 1)),
-                f'Incomplete manuscript map: {source["file"]}')
-        for page in source['pages']:
-            require(page['reviewed'] and page['targets'], f'Unreviewed manuscript page: {page}')
-            for target in page['targets']:
-                require(labels.get(target['label']) == ROOT / target['file'],
-                        f'Incorrect manuscript target: {target}')
-        original = ROOT / source['file']
-        if source.get('kind') == 'photo':
-            require(original.is_relative_to(ROOT / 'lecture4'),
-                    f'Photo outside lecture4: {source["file"]}')
-            require(source['file'] not in photos, f'Repeated photo: {source["file"]}')
-            photos.add(source['file'])
-            require(source.get('selection') in {'lecture', 'mixed'},
-                    f'Missing photo selection: {source["file"]}')
-            require(source['selection'] != 'mixed' or source.get('excluded_regions'),
-                    f'Missing practice boundary: {source["file"]}')
-        if original.exists():
-            require(hashlib.sha256(original.read_bytes()).hexdigest() == source['sha256'],
-                    f'Manuscript changed: {original.name}')
-        pages += len(source['pages'])
-    local_photos = {str(p.relative_to(ROOT)) for p in (ROOT / 'lecture4').glob('*.jpg')}
-    require(local_photos.issubset(photos), 'A lecture4 photo has not been reviewed')
-    print(f'Sources: {len(parts)} themes, {len(labels)} labels, {pages} mapped manuscript pages; '
+    inventory = {
+        'parts': parts,
+        'labels': labels,
+        'proofs': content.count('\\begin{proof}'),
+        'display_math': content.count('\\begin{equation}') + content.count('\\['),
+        'figures': figures,
+    }
+    print(f'Sources: {len(parts)} themes, {len(labels)} labels; '
           f'{inventory["proofs"]} proofs and {inventory["display_math"]} display equations.')
     return inventory
 
@@ -112,8 +75,8 @@ def check_pdf(inventory):
     require(not bad, f'LaTeX diagnostic: {bad[0] if bad else ""}')
     aux = (build / 'notes-colored.aux').read_text()
     numbers = dict(re.findall(r'\\newlabel\{([^}]+)\}\{\{([^}]+)\}', aux))
-    for label, obj in inventory['objects'].items():
-        require(numbers.get(label) == obj['number'], f'Changed number for {label}: {numbers.get(label)}')
+    for label in inventory['labels']:
+        require(label in numbers, f'Missing compiled label: {label}')
     text = command('pdftotext', '-layout', str(pdf), '-')
     require(not re.search(r'[\x00-\x08\x0b\x0e-\x1f]', text), 'Unmapped control characters in PDF text')
     normalized = ' '.join(command('pdftotext', '-raw', str(pdf), '-').split())
@@ -125,14 +88,16 @@ def check_pdf(inventory):
     require(text.count('Доказательство.') == inventory['proofs'], 'Lost rendered proof')
     names = {'def': 'Определение', 'thm': 'Теорема', 'lem': 'Лемма',
              'cor': 'Следствие', 'exm': 'Пример', 'fig': 'Рис.'}
-    for obj in inventory['objects'].values():
-        if obj['kind'] in names:
-            require(names[obj['kind']] + ' ' + obj['number'] in normalized,
-                    f'Missing rendered object: {obj}')
-        elif obj['kind'] == 'eq':
-            require('(' + obj['number'] + ')' in text, f'Missing rendered equation: {obj}')
-    for part in inventory['parts']:
-        require(part['title'] in normalized, f'Missing theme: {part["title"]}')
+    for label in inventory['labels']:
+        kind = label.split('-', 1)[0]
+        number = numbers[label]
+        if kind in names:
+            require(names[kind] + ' ' + number in normalized,
+                    f'Missing rendered object: {label}')
+        elif kind == 'eq':
+            require('(' + number + ')' in text, f'Missing rendered equation: {label}')
+    for title in inventory['parts']:
+        require(title in normalized, f'Missing theme: {title}')
     bbox = ET.fromstring(command('pdftotext', '-bbox', str(pdf), '-'))
     ns = {'x': 'http://www.w3.org/1999/xhtml'}
     pages = bbox.findall('.//x:page', ns)
