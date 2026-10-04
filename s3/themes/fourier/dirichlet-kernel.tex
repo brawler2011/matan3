@@ -1,0 +1,144 @@
+\section{Ядро Дирихле}\label{sec-fourier-dirichlet}
+
+Пусть \(f\) абсолютно интегрируема на \([-\pi,\pi]\). Обозначим частичную сумму её тригонометрического ряда Фурье через
+\begin{equation}
+T_n(x)=\frac{a_0}{2}+\sum_{k=1}^n\bigl(a_k\cos kx+b_k\sin kx\bigr),
+\qquad n\ge0.
+\label{eq-fourier-partial-sum}
+\end{equation}
+
+\begin{definition}[Ядро Дирихле]\label{def-dirichlet-kernel}
+
+Функция
+\begin{equation}
+D_n(u)=\frac12+\sum_{k=1}^n\cos ku
+\label{eq-dirichlet-kernel}
+\end{equation}
+называется ядром Дирихле. При \(n=0\) сумма пуста и \(D_0(u)=1/2\).
+
+\end{definition}
+
+Подставим коэффициенты \eqref{eq-trigonometric-coefficients} в \eqref{eq-fourier-partial-sum}. По линейности интеграла и формуле \(\cos kx\cos kt+\sin kx\sin kt=\cos k(x-t)\) имеем
+\[
+\begin{aligned}
+T_n(x)
+&=\frac1\pi\int_{-\pi}^{\pi}f(t)
+\left(\frac12+\sum_{k=1}^n\bigl(\cos kx\cos kt+\sin kx\sin kt\bigr)\right)\,dt\\
+&=\frac1\pi\int_{-\pi}^{\pi}f(t)
+\left(\frac12+\sum_{k=1}^n\cos k(x-t)\right)\,dt.
+\end{aligned}
+\]
+Таким образом,
+\begin{equation}
+T_n(x)=\frac1\pi\int_{-\pi}^{\pi}f(t)D_n(x-t)\,dt.
+\label{eq-fourier-kernel-integral}
+\end{equation}
+
+\begin{lemma}[Явная формула и свойства ядра]\label{lem-dirichlet-properties}
+
+Ядро \(D_n\) непрерывно, чётно и \(2\pi\)-периодично. При \(u\notin2\pi\mathbb Z\)
+\begin{equation}
+D_n(u)=\frac{\sin\bigl((n+\tfrac12)u\bigr)}{2\sin(u/2)}.
+\label{eq-dirichlet-sine-form}
+\end{equation}
+В точках \(u=2\pi m\), \(m\in\mathbb Z\), значение равно \(n+1/2\). Кроме того,
+\begin{equation}
+\frac1\pi\int_{-\pi}^{\pi}D_n(u)\,du=1,
+\qquad
+\frac2\pi\int_0^\pi D_n(u)\,du=1.
+\label{eq-dirichlet-normalization}
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+
+Непрерывность, чётность и периодичность следуют из определения. Для явной формулы используем тождество
+\[
+2\sin(u/2)\cos ku
+=\sin\bigl((k+\tfrac12)u\bigr)-\sin\bigl((k-\tfrac12)u\bigr).
+\]
+После суммирования по \(k=1,\ldots,n\) члены сокращаются:
+\[
+\begin{aligned}
+2\sin(u/2)D_n(u)
+&=\sin(u/2)+\sum_{k=1}^n
+\left(\sin\bigl((k+\tfrac12)u\bigr)-\sin\bigl((k-\tfrac12)u\bigr)\right)\\
+&=\sin\bigl((n+\tfrac12)u\bigr).
+\end{aligned}
+\]
+При \(u\notin2\pi\mathbb Z\) делим на \(2\sin(u/2)\); при \(u=2\pi m\) используем определение \eqref{eq-dirichlet-kernel}. Интеграл каждого \(\cos ku\), \(k\ge1\), на \([-\pi,\pi]\) равен нулю, а интеграл постоянного члена \(1/2\) равен \(\pi\). Второе равенство \eqref{eq-dirichlet-normalization} следует из чётности.
+
+\end{proof}
+
+\section{Принцип локализации}\label{sec-fourier-localization}
+
+Далее \(f\) --- \(2\pi\)-периодическая функция, абсолютно интегрируемая на одном периоде. При задании функции на \([-\pi,\pi]\) используется её периодическое продолжение; значения в отдельных точках не влияют на коэффициенты и интегралы.
+
+\begin{lemma}[Симметричная запись частичной суммы]\label{lem-fourier-symmetric-integral}
+
+Для любого \(x\in\mathbb R\) справедливо равенство
+\begin{equation}
+T_n(x)=\frac1\pi\int_0^\pi\bigl(f(x-t)+f(x+t)\bigr)D_n(t)\,dt.
+\label{eq-fourier-symmetric-integral}
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+
+В \eqref{eq-fourier-kernel-integral} сделаем замену \(u=x-t\):
+\[
+T_n(x)=\frac1\pi\int_{x-\pi}^{x+\pi}f(x-u)D_n(u)\,du.
+\]
+Подынтегральная функция \(2\pi\)-периодична, поэтому интеграл по любому отрезку длины \(2\pi\) одинаков. Переносим пределы на \([-\pi,\pi]\), разбиваем интеграл в нуле и в отрицательной части заменяем \(u\) на \(-u\). По чётности \(D_n\) получаем
+\[
+\begin{aligned}
+T_n(x)&=\frac1\pi\int_{-\pi}^{\pi}f(x-u)D_n(u)\,du\\
+&=\frac1\pi\int_0^\pi\bigl(f(x-u)+f(x+u)\bigr)D_n(u)\,du.
+\end{aligned}
+\]
+
+\end{proof}
+
+\begin{theorem}[Принцип локализации Римана]\label{thm-fourier-localization}
+
+Для любого \(x_0\in\mathbb R\) и любого фиксированного \(\delta\in(0,\pi)\)
+\begin{equation}
+\lim_{n\to\infty}\left(
+T_n(x_0)-\frac1\pi\int_0^\delta
+\bigl(f(x_0-t)+f(x_0+t)\bigr)D_n(t)\,dt
+\right)=0.
+\label{eq-fourier-localization}
+\end{equation}
+Следовательно, сходимость ряда Фурье в точке \(x_0\) и значение его суммы определяются поведением функции в сколь угодно малой окрестности этой точки.
+
+\end{theorem}
+
+\begin{proof}
+
+По лемме \ref{lem-fourier-symmetric-integral} разность в \eqref{eq-fourier-localization} равна
+\[
+\begin{aligned}
+\frac1\pi\int_\delta^\pi\bigl(f(x_0-t)+f(x_0+t)\bigr)D_n(t)\,dt
+&=\frac1{2\pi}\int_\delta^\pi h(t)\sin\bigl((n+\tfrac12)t\bigr)\,dt,\\
+h(t)&=\frac{f(x_0-t)+f(x_0+t)}{\sin(t/2)}.
+\end{aligned}
+\]
+На \([\delta,\pi]\) знаменатель отделён от нуля: \(\sin(t/2)\ge\sin(\delta/2)>0\). Поэтому
+\[
+\int_\delta^\pi|h(t)|\,dt
+\le\frac1{\sin(\delta/2)}\int_\delta^\pi
+\bigl(|f(x_0-t)|+|f(x_0+t)|\bigr)\,dt<+\infty.
+\]
+Лемма \ref{lem-riemann-oscillatory} при \(\omega=n+1/2\) показывает, что осциллирующий интеграл стремится к нулю. При наличии особых точек применяем её отдельно на соответствующих участках. Получаем \eqref{eq-fourier-localization}.
+
+\end{proof}
+
+\begin{cor}[Совпадение функций в окрестности]\label{cor-fourier-local-agreement}
+
+Пусть \(f\) и \(g\) --- \(2\pi\)-периодические абсолютно интегрируемые функции, совпадающие при \(0<|x-x_0|<\delta\) для некоторого \(\delta>0\). Тогда \(T_n^f(x_0)-T_n^g(x_0)\to0\). Их ряды Фурье сходятся в \(x_0\) одновременно и при сходимости имеют одну и ту же сумму.
+
+\end{cor}
+
+Применяем теорему \ref{thm-fourier-localization} к \(f-g\), выбрав меньшую \(\delta<\pi\). Локальный интеграл равен нулю, откуда следует утверждение.

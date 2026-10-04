@@ -1,0 +1,123 @@
+\section{Коэффициенты и ряды Фурье}\label{sec-fourier-coefficients}
+
+\begin{lemma}[Коэффициенты равномерного разложения]\label{lem-orthogonal-coefficients}
+
+Пусть \(\{\varphi_n\}\) --- ортогональная система на \([a,b]\), а ряд \(\sum_{n=1}^\infty c_n\varphi_n(x)\) сходится равномерно на этом отрезке к \(f(x)\). Тогда
+\begin{equation}
+c_n=\frac{(f,\varphi_n)}{\|\varphi_n\|^2}
+=\frac{\displaystyle\int_a^b f(x)\varphi_n(x)\,dx}
+{\displaystyle\int_a^b\varphi_n^2(x)\,dx},
+\qquad n\ge1.
+\label{eq-orthogonal-coefficients}
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+
+Фиксируем \(k\). Непрерывная функция \(\varphi_k\) ограничена на \([a,b]\). Умножение равномерно сходящегося ряда на неё сохраняет равномерную сходимость. По теореме \ref{thm-series-integral} можно интегрировать почленно:
+\[
+\begin{aligned}
+(f,\varphi_k)
+&=\int_a^b\left(\sum_{n=1}^\infty c_n\varphi_n(x)\right)\varphi_k(x)\,dx\\
+&=\sum_{n=1}^\infty c_n\int_a^b\varphi_n(x)\varphi_k(x)\,dx
+=c_k\|\varphi_k\|^2.
+\end{aligned}
+\]
+При \(n\ne k\) интегралы равны нулю по ортогональности. Делим на положительное число \(\|\varphi_k\|^2\).
+
+\end{proof}
+
+\begin{definition}[Ряд Фурье по ортогональной системе]\label{def-orthogonal-fourier-series}
+
+Пусть \(f\in C([a,b])\). Числа \(c_n\), определённые формулой \eqref{eq-orthogonal-coefficients}, называются коэффициентами Фурье функции \(f\) по системе \(\{\varphi_n\}\). Ряд \(\sum_{n=1}^\infty c_n\varphi_n(x)\) называется её рядом Фурье по этой системе. Записывают
+\[
+f(x)\sim\sum_{n=1}^\infty c_n\varphi_n(x).
+\]
+Знак \(\sim\) означает соответствие функции её ряду Фурье; сходимость ряда и равенство его суммы функции требуют отдельного исследования.
+
+\end{definition}
+
+Формула коэффициентов применима и к интегрируемым по Риману функциям \(f\): непрерывность \(\varphi_n\) обеспечивает существование интегралов. Также можно допустить абсолютно сходящиеся несобственные интегралы, если \(f\) локально интегрируема внутри \((a,b)\).
+
+\subsection{Тригонометрический ряд Фурье}\label{sec-fourier-trigonometric}
+
+\begin{definition}[Тригонометрические коэффициенты]\label{def-trigonometric-fourier-series}
+
+Пусть \(f\) абсолютно интегрируема на \([-\pi,\pi]\) в собственном или несобственном смысле. Её тригонометрический ряд Фурье имеет вид
+\begin{equation}
+f(x)\sim\frac{a_0}{2}+\sum_{n=1}^\infty\bigl(a_n\cos nx+b_n\sin nx\bigr),
+\label{eq-trigonometric-fourier-series}
+\end{equation}
+где
+\begin{equation}
+\begin{aligned}
+a_n&=\frac1\pi\int_{-\pi}^{\pi}f(x)\cos nx\,dx,\qquad n\ge0,\\
+b_n&=\frac1\pi\int_{-\pi}^{\pi}f(x)\sin nx\,dx,\qquad n\ge1.
+\end{aligned}
+\label{eq-trigonometric-coefficients}
+\end{equation}
+
+\end{definition}
+
+Значения норм в примере \ref{exm-trigonometric-system} объясняют множитель \(1/\pi\). Коэффициент при постоянной функции равен \((f,1)/\|1\|^2=(2\pi)^{-1}\int_{-\pi}^{\pi}f(x)\,dx=a_0/2\), откуда отдельная запись постоянного члена.
+
+\section{Лемма Римана об осциллирующих интегралах}\label{sec-fourier-riemann}
+
+Обозначение \(f\in R_{\mathrm{loc}}((a,b))\) означает, что \(f\) интегрируема по Риману на каждом замкнутом отрезке, лежащем внутри \((a,b)\). Абсолютная интегрируемость означает конечность \(\int_a^b|f(x)|\,dx\); при особых точках этот интеграл понимается как несобственный.
+
+\begin{lemma}[Римана]\label{lem-riemann-oscillatory}
+
+Пусть \((a,b)\) --- конечный или бесконечный интервал, \(f\in R_{\mathrm{loc}}((a,b))\), а \(\int_a^b|f(x)|\,dx<+\infty\). Тогда
+\begin{equation}
+\lim_{|\omega|\to\infty}\int_a^b f(x)\sin\omega x\,dx
+=\lim_{|\omega|\to\infty}\int_a^b f(x)\cos\omega x\,dx=0.
+\label{eq-riemann-oscillatory}
+\end{equation}
+
+\end{lemma}
+
+\begin{proof}
+
+\textbf{1. Собственный интеграл на конечном отрезке.}
+Пусть \(f\in R([a,b])\) и \(|f(x)|\le C\). Для \(\varepsilon>0\) выбираем разбиение \(a=x_0<x_1<\cdots<x_N=b\), для которого разность верхней и нижней сумм Дарбу удовлетворяет
+\[
+\sum_{j=1}^N(M_j-m_j)\Delta x_j<\frac{\varepsilon}{2},
+\]
+где \(M_j=\sup_{[x_{j-1},x_j]}f\), \(m_j=\inf_{[x_{j-1},x_j]}f\), \(\Delta x_j=x_j-x_{j-1}\).
+На каждом участке вычитаем постоянную \(m_j\). При \(\omega\ne0\) получаем
+\[
+\begin{aligned}
+\left|\int_a^b f(x)\sin\omega x\,dx\right|
+&\le\sum_{j=1}^N\int_{x_{j-1}}^{x_j}|f(x)-m_j|\,dx
++\sum_{j=1}^N|m_j|\left|\int_{x_{j-1}}^{x_j}\sin\omega x\,dx\right|\\
+&\le\sum_{j=1}^N(M_j-m_j)\Delta x_j
++\frac{2}{|\omega|}\sum_{j=1}^N|m_j|\\
+&<\frac{\varepsilon}{2}+\frac{2NC}{|\omega|}.
+\end{aligned}
+\]
+Разбиение уже фиксировано, поэтому при достаточно большом \(|\omega|\) второе слагаемое меньше \(\varepsilon/2\). Для косинуса доказательство то же: его интеграл по каждому участку также по модулю не превосходит \(2/|\omega|\).
+
+\textbf{2. Абсолютно сходящийся несобственный интеграл.}
+Выбираем конечный отрезок \([\alpha,\beta]\subset(a,b)\), чтобы
+\[
+\int_a^\alpha|f(x)|\,dx+\int_\beta^b|f(x)|\,dx<\frac{\varepsilon}{2}.
+\]
+На \([\alpha,\beta]\) применяем первую часть. При достаточно большом \(|\omega|\)
+\[
+\left|\int_a^b f(x)\sin\omega x\,dx\right|
+\le\int_a^\alpha|f(x)|\,dx
++\left|\int_\alpha^\beta f(x)\sin\omega x\,dx\right|
++\int_\beta^b|f(x)|\,dx<\varepsilon.
+\]
+Для косинуса рассуждение аналогично. Если есть конечное число внутренних особых точек, интервал разбиваем в них и применяем доказанное к каждому из полученных интервалов.
+
+\end{proof}
+
+\begin{cor}[Стремление коэффициентов к нулю]\label{cor-fourier-coefficients-zero}
+
+Для абсолютно интегрируемой функции на \([-\pi,\pi]\) коэффициенты \eqref{eq-trigonometric-coefficients} удовлетворяют \(a_n\to0\) и \(b_n\to0\) при \(n\to\infty\).
+
+\end{cor}
+
+Это непосредственное применение леммы \ref{lem-riemann-oscillatory} при \(\omega=n\). Данное свойство само по себе не гарантирует сходимости ряда \eqref{eq-trigonometric-fourier-series}.
